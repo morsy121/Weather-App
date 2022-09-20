@@ -22,9 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Provider.of<WeatherProvider>(context).weatherData == null
             ? Colors.blue
-            : Provider.of<WeatherProvider>(context)
-                .weatherData!
-                .getThemeColor(),
+            : Provider.of<WeatherProvider>(context).weatherData!.getColor(),
       ),
       home: HomePage(),
     );

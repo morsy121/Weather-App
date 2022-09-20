@@ -46,16 +46,32 @@ class HomePage extends StatelessWidget {
               ],
             ))
           : Container(
+              //   decoration: BoxDecoration(
+              //       gradient: LinearGradient(
+              //     colors: [
+              //       weatherData!.getThemeColor(),
+              //       weatherData!.getThemeColor()[300]!,
+              //       weatherData!.getThemeColor()[100]!,
+              //     ],
+              //     begin: Alignment.topCenter,
+              //     end: Alignment.bottomCenter,
+              //   )
+              // ),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
-                colors: [
-                  weatherData!.getThemeColor(),
-                  weatherData!.getThemeColor()[300]!,
-                  weatherData!.getThemeColor()[100]!,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              )),
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                    Provider.of<WeatherProvider>(context)
+                        .weatherData!
+                        .getColor()[500]!,
+                    Provider.of<WeatherProvider>(context)
+                        .weatherData!
+                        .getColor()[300]!,
+                    Provider.of<WeatherProvider>(context)
+                        .weatherData!
+                        .getColor()[100]!,
+                  ])),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -66,7 +82,8 @@ class HomePage extends StatelessWidget {
                     Provider.of<WeatherProvider>(context).cityName!,
                     style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   ),
-                  Text('updated at :',
+                  Text(
+                      'update at ${weatherData!.date.hour.toString()}: ${weatherData!.date.minute.toString()}',
                       style: TextStyle(
                         fontSize: 20,
                       )),
@@ -74,7 +91,9 @@ class HomePage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Image.asset(weatherData!.getImage()),
+                      Image.network(
+                        'https:${weatherData!.icon.toString()}',
+                      ),
                       Text(
                         "${weatherData!.temp.toInt()}",
                         style: TextStyle(
