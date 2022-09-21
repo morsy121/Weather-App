@@ -46,17 +46,6 @@ class HomePage extends StatelessWidget {
               ],
             ))
           : Container(
-              //   decoration: BoxDecoration(
-              //       gradient: LinearGradient(
-              //     colors: [
-              //       weatherData!.getThemeColor(),
-              //       weatherData!.getThemeColor()[300]!,
-              //       weatherData!.getThemeColor()[100]!,
-              //     ],
-              //     begin: Alignment.topCenter,
-              //     end: Alignment.bottomCenter,
-              //   )
-              // ),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,

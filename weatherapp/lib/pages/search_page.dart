@@ -27,16 +27,13 @@ class SearchPage extends StatelessWidget {
 
               WeatherServices services = WeatherServices();
 
-              WeatherModel weather =
+              WeatherModel? weather =
                   await services.getWeather(cityName: cityName!);
               Provider.of<WeatherProvider>(context, listen: false).weatherData =
                   weather;
               Provider.of<WeatherProvider>(context, listen: false).cityName =
                   cityName;
 
-              CircularProgressIndicator(
-                color: Colors.orange,
-              );
               Navigator.pop(context);
 
               print(weather);
@@ -50,16 +47,13 @@ class SearchPage extends StatelessWidget {
                     onTap: () async {
                       WeatherServices services = WeatherServices();
 
-                      WeatherModel weather =
+                      WeatherModel? weather =
                           await services.getWeather(cityName: cityName!);
                       Provider.of<WeatherProvider>(context, listen: false)
                           .weatherData = weather;
                       Provider.of<WeatherProvider>(context, listen: false)
                           .cityName = cityName;
 
-                      CircularProgressIndicator(
-                        color: Colors.orange,
-                      );
                       Navigator.pop(context);
                     },
                     child: Icon(Icons.search)),

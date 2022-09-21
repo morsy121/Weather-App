@@ -21,7 +21,7 @@ class WeatherModel {
   factory WeatherModel.fromJson(dynamic data) {
     var jsonData = data['forecast']['forecastday'][0]['day'];
 
-    String localtime = jsonData['location']['localtime'];
+    String localtime = data['location']['localtime'];
     DateFormat inputFormat = DateFormat('yyyy-MM-dd hh:mm');
     DateTime input = inputFormat.parse(localtime);
     String datee = DateFormat('yyyy-MM-dd hh:mm').format(input);
